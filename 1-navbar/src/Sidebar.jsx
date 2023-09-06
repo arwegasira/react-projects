@@ -1,12 +1,14 @@
 import pages from './data'
 import { AiFillCloseCircle } from 'react-icons/ai'
+import { useGlobalContext } from './Context'
 const Sidebar = () => {
+  const { isSidebarOpen, closeSidebar } = useGlobalContext()
   return (
-    <aside className='side-bar'>
+    <aside className={isSidebarOpen ? 'side-bar show' : 'side-bar'}>
+      <button className='close-sidebar' onClick={() => closeSidebar()}>
+        <AiFillCloseCircle></AiFillCloseCircle>
+      </button>
       <div className='sidebar-center'>
-        <button className='close-sidebar'>
-          <AiFillCloseCircle></AiFillCloseCircle>
-        </button>
         <ul className='side-links'>
           {pages.map((item) => {
             const { page, pageId } = item

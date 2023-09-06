@@ -1,5 +1,5 @@
-import Navbar from './assets/Navbar'
-import Sidebar from './assets/Sidebar'
+import Navbar from './Navbar'
+import Sidebar from './Sidebar'
 function App() {
   return (
     <main>
