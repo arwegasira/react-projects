@@ -5,6 +5,9 @@ export const useGlobalContext = () => useContext(globalContext)
 
 const AppContext = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [pageId, setPageId] = useState(null)
+  const [submenuLeft, setSubmenuLeft] = useState(0)
+  const [submenuTop, setSubmenuTop] = useState(0)
   const openSidebar = () => {
     setIsSidebarOpen(true)
   }
@@ -17,6 +20,12 @@ const AppContext = ({ children }) => {
         isSidebarOpen: isSidebarOpen,
         closeSidebar: closeSidebar,
         openSidebar: openSidebar,
+        pageId: pageId,
+        setPageId: setPageId,
+        submenuLeft: submenuLeft,
+        submenuTop: submenuTop,
+        setSubmenuLeft: setSubmenuLeft,
+        setSubmenuTop: setSubmenuTop,
       }}
     >
       {children}
