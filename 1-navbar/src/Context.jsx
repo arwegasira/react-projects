@@ -12,6 +12,7 @@ const AppContext = ({ children }) => {
     setIsSidebarOpen(true)
   }
   const closeSidebar = () => {
+    setPageId(null)
     setIsSidebarOpen(false)
   }
   return (

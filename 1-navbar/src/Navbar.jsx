@@ -13,14 +13,20 @@ const Navbar = () => {
     setSubmenuTop,
   } = useGlobalContext()
   const handleMouseEnter = ({ e, pageId }) => {
-    const { left } = e.target.getBoundingClientRect()
-    setSubmenuLeft(left)
-    setSubmenuTop(60)
+    const { left, bottom, right } = e.target.getBoundingClientRect()
+    setSubmenuLeft(right - 40)
+    setSubmenuTop(bottom)
     setPageId(pageId)
   }
 
+  const handleMouseOver = (e) => {
+    if (!e.target.classList.contains('link')) {
+      setPageId(null)
+    }
+  }
+
   return (
-    <nav className='nav'>
+    <nav className='nav' onMouseOver={(e) => handleMouseOver(e)}>
       <div className='nav-center'>
         <button type='button' onClick={() => openSidebar()}>
           <FaBarsStaggered></FaBarsStaggered>
