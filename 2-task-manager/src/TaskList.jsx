@@ -3,8 +3,11 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import Button from './Button'
 import { useFetchTasks, useClearTaskList } from './CustomHooks'
 import Task from './Task'
+import { useGlobalContext } from './Context'
 const TaskList = () => {
   const [tasks, setTasks] = useState([])
+  const { filter, setFilter } = useGlobalContext()
+
   const { isLoading, isError, error, data } = useFetchTasks(setTasks)
 
   const { clearTaskList, clearListLoading } = useClearTaskList()
@@ -29,9 +32,8 @@ const TaskList = () => {
         <input
           type='text'
           placeholder='Filter List'
-          onChange={(e) => {
-            console.log(e.target.value)
-          }}
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
         />
       </div>
       <div className='task-list'>

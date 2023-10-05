@@ -1,11 +1,13 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { customFetch } from './Axios/customFetch'
+import { useGlobalContext } from './Context'
 
 export const useFetchTasks = (setTasks) => {
+  const { filter } = useGlobalContext()
   const { isLoading, isError, error, data } = useQuery({
-    queryKey: ['task'],
+    queryKey: ['task', filter],
     queryFn: async () => {
-      const { data } = await customFetch.get('/')
+      const { data } = await customFetch.get(`/?task=${filter}`)
       setTasks(data)
       return data
     },
